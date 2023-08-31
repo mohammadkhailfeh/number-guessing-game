@@ -1,0 +1,39 @@
+from random import  randint
+
+EASY_LEVEL = 10
+HARD_LEVEL = 5
+
+#to check if the guess is ture or not
+def check_answer(guees,answer):
+    if guees > answer:
+        print('to heigh')
+    elif guees < answer:
+        print('too low')
+    else:
+        print(f'thats right the answer was {guees}')
+
+def set_difficult():
+    level = input('chose a difficulty hard or easy:')
+    if level == 'easy':
+        return EASY_LEVEL
+    else:
+        return HARD_LEVEL
+
+print('i am thinking about a number beteen 1 to 100')
+#makeing the number
+answer = randint(1,100)
+
+#call the function
+turns = set_difficult()
+#show how many turns they have
+print(f'you have {turns}attempts remaining to guess the number')
+guess = 0
+
+#to make it repeatable
+while guess != answer:
+
+    guess = int(input('make a guess: '))
+    turns = turns - 1
+    print(f'you have {turns} attempts remaining to guess the number')
+    #call the function
+    check_answer(guess,answer)
